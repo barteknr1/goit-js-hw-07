@@ -19,17 +19,19 @@ galleryItems.forEach((item) => {
 const selectImage = (event) => {
     event.preventDefault();
     if (event.target.nodeName !== "IMG") {
-        return;
+        return
     }
     const imageSource = event.target.dataset.source;
     const instance = basicLightbox.create(`<img src="${imageSource}" />`);
     instance.show();
+
+    const close = (event) => {
+        const visible = instance.visible()
+        if (visible === true && event.key === 'Escape') {
+            instance.close();
+        }
+    }
+    gallery.addEventListener('keydown', close);
 }
 
     gallery.addEventListener('click', selectImage);
-
-    document.addEventListener("keydown", event => {
-        if (event.key = 'Escape') {
-            instance.close();
-        }
-    });

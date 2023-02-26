@@ -16,7 +16,6 @@ galleryItems.forEach((item) => {
 })
 
 var lightbox = new SimpleLightbox('.gallery__item', { 
-    caption: true,
     captionDelay: 250,
     captionsData: 'alt',
  });
